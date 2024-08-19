@@ -6,12 +6,28 @@ const AmountModal = ({ handleClick }) => {
   const amount = useRef(null);
   const title = useRef(null);
 
-  const { handleFormSubmit,setIncome,setExpense} = useContext(DataContext);
+  const { handleFormSubmit,setIncome,setExpense,income} = useContext(DataContext);
 
   const handleSubmit = () => {
 
+    if(title.current.value===""){
+      alert("Enter a title");
+      return;
+    }
+
+    if(amount.current.value===""){
+      alert("Enter an amount");
+      return;
+    }
+
     if(type.current.value==="income") setIncome(prev=>prev+parseInt(amount.current.value))
-    if(type.current.value==="expense") setExpense(prev=>prev+parseInt(amount.current.value))
+    if(type.current.value==="expense") {
+      if(amount.current.value>=income) {
+        alert("No balance");
+        return;
+      }
+      setExpense(prev=>prev+parseInt(amount.current.value))
+    }
     handleFormSubmit({
       [type.current.name]: type.current.value,
       [title.current.name]: title.current.value,
