@@ -9,7 +9,7 @@ const ExpenseBar = ({data}) => {
         <h4 className="text-2xl">{title}</h4>
         <span className="text-[0.7rem] pl-2 text-slate-500">{new Date().toDateString()}</span>
       </div>
-      <span>{amount}</span>
+      <span>-{amount}</span>
     </div>
   );
 }

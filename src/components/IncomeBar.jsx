@@ -8,7 +8,7 @@ const IncomeBar = ({ data }) => {
           {new Date().toDateString()}
         </span>
       </div>
-      <span>{amount}</span>
+      <span>+{amount}</span>
     </div>
   );
 };
